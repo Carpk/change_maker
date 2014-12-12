@@ -14,6 +14,7 @@ class Change
     coins = []
 
     currency.each do |break_value|
+      break_value = break_value.to_i
       coins << Change.create_coins(breaking_amount, break_value)
       breaking_amount %= break_value
     end

@@ -5,8 +5,8 @@ RSpec::Core::RakeTask.new(:spec)
 
 task :rspec => :spec
 
-task :make_change_for, :value, :currency do |t, args|
-  value = args[:value] || 0
-  currency = arg[:currency]
-  Change.new.make(value.to_i, currency)
+task :break_change do
+  change = ARGV[0]
+  # value = Change.make(change)
+  puts "#{change}"
 end
