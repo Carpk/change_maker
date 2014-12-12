@@ -1,7 +1,7 @@
 class Change
   STD_VALUES = [25, 10, 5, 1]
 
-  def self.break_with_value(amount, value)
+  def self.create_coins(amount, value)
     coins = []
     multiplier = amount / value
     multiplier.times do
@@ -14,24 +14,30 @@ class Change
     coins = []
 
     currency.each do |break_value|
-      coins << Change.break_with_value(breaking_amount, break_value)
+      coins << Change.create_coins(breaking_amount, break_value)
       breaking_amount %= break_value
     end
     coins.flatten
   end
 
-  def self.make(breaking_amount, currency = STD_VALUES)
+  def recursive_formula(breaking_amount, currency)
+    coins = []
+    return coins if breaking_amount == 0
+    currency.each do |value|
+      breaking_amount = Change.break_total_with
+      currency.delete(value)
+      coins << recursive_formula(breaking_amount, currency)
+    end
+  end
 
-    currency.lenght.times do
-      min_change = Change.break_total_with(breaking_amount, currency)
+  def self.make(break_amount, currency = STD_VALUES)
+    min_change = Array.new(9, '#')
+    currency.length.times do
+      potential_change = Change.break_total_with(break_amount, currency)
+      min_change = potential_change if potential_change.length < min_change.length
       currency.rotate!
     end
+    min_change
   end
 
-  def recursive_formula(breaking_amount, currency)
-    currency.each do |value|
-      currency.delete(value)
-      recursive_formula(breaking_amount, currency)
-    end
-  end
 end

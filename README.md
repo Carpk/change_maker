@@ -7,6 +7,10 @@ To run the app, use the following command accompanied with the value you would l
 
 `rake make_change_for[32]`
 
+To run rspec tests:
+
+rspec spec/change_spec.rb
+
 ## Instructions
 
 ### The point of this exercise is to create a change maker. That is, given any amount of cents
