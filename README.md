@@ -16,6 +16,9 @@ To run the application, download the repo and use the following command:
 
 `rake make_change`
 
+The application will prompt you for the amount you would like to
+break and the types of currencies you would like in return.
+
 ### Testing
 
 To run rspec tests:

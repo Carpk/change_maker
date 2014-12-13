@@ -20,18 +20,8 @@ class Change
     coins.flatten
   end
 
-  def recursive_formula(breaking_amount, currency)
-    coins = []
-    return coins if breaking_amount == 0
-    currency.each do |value|
-      breaking_amount = break_total_with
-      currency.delete(value)
-      coins << recursive_formula(breaking_amount, currency)
-    end
-  end
-
   def make_change(break_amount, currency)
-    min_change = Array.new(15, '#')
+    min_change = create_coins(break_amount, 1)
     currency.length.times do
       potential_change = break_total_with(break_amount, currency)
       min_change = potential_change if potential_change.length < min_change.length
@@ -39,5 +29,4 @@ class Change
     end
     min_change
   end
-
 end
