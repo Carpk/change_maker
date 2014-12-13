@@ -3,6 +3,7 @@ require_relative "../lib/console.rb"
 describe "Change" do
 
   let(:change) {Change.new}
+  let(:currency) {[25,10,5,1]}
 
   describe "should return the correct" do
 
@@ -19,15 +20,15 @@ describe "Change" do
     end
 
     it "value using standard currency" do
-      expect(change.make_change(26)).to eq([25,1])
+      expect(change.make_change(26, currency)).to eq([25,1])
     end
 
     it "value using standard currency" do
-      expect(change.make_change(24)).to eq([10,10,1,1,1,1])
+      expect(change.make_change(24, currency)).to eq([10,10,1,1,1,1])
     end
 
     it "value using standard currency" do
-      expect(change.make_change(49)).to eq([25, 10, 10, 1, 1, 1, 1])
+      expect(change.make_change(49, currency)).to eq([25, 10, 10, 1, 1, 1, 1])
     end
 
     it "value using alternate currency" do
@@ -39,7 +40,7 @@ describe "Change" do
     end
 
     it "value when passed no nothing" do
-      expect(change.make_change(0)).to eq([])
+      expect(change.make_change(0, currency)).to eq([])
     end
   end
 end

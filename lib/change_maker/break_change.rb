@@ -1,19 +1,30 @@
 class BreakChange
 
-  def self.run
-    console = ScreenUtility.new
-    change = Change.new
+  def self.query_user
+    ScreenUtility.prompt_for_amount
+    break_amount = ScreenUtility.user_input
+
+    ScreenUtility.prompt_for_currency
+    currency = ScreenUtility.user_input
+
+    {break_amount: break_amount, currency: currency}
+  end
+
+  def self.validate_data(user_input)
     validator = ValidIO.new
 
-    console.prompt_for_amount
-    break_amount = console.user_input
-    console.prompt_for_currency
-    currency = console.user_input
+    user_input[:currency] = validator.validate_coins(user_input[:currency])
+    user_input[:break_amount] = validator.validate_amount(user_input[:break_amount])
 
-    currency = validator.validate_coins(currency)
-    break_amount = validator.validate_amount(break_amount)
-    coins = change.make_change(break_amount, currency)
+    user_input
+  end
 
-    console.display_change(coins)
+  def self.run
+    input_set = BreakChange.query_user
+    input_set = BreakChange.validate_data(input_set)
+
+    coins =  Change.new.make_change(input_set[:break_amount], input_set[:currency])
+
+    ScreenUtility.display_change(coins)
   end
 end

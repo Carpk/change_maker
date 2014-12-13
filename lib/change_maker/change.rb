@@ -1,5 +1,4 @@
 class Change
-  STD_VALUES = [25, 10, 5, 1]
 
   def create_coins(amount, value)
     coins = []
@@ -31,7 +30,7 @@ class Change
     end
   end
 
-  def make_change(break_amount, currency = STD_VALUES)
+  def make_change(break_amount, currency)
     min_change = Array.new(15, '#')
     currency.length.times do
       potential_change = break_total_with(break_amount, currency)

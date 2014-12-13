@@ -16,6 +16,11 @@ describe "ValidIO" do
       expect(validator.validate_coins(coins)).to eq([25, 10, 5, 1])
     end
 
+    it "given a single number" do
+      coins = "3"
+      expect(validator.validate_coins(coins)).to eq([3])
+    end
+
     it "given something other than a number inside an array" do
       coins = "25, hello, 6, [], 1"
       expect(validator.validate_coins(coins)).to eq([25, 6, 1])
