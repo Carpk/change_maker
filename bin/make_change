@@ -1,6 +1,3 @@
-require_relative "../lib/change"
+require_relative "../lib/console"
 
-change = ARGV[0].to_i
-currency = *ARGV[1] || [25,10,5,1]
-coins = Change.make(change, currency)
-puts "#{currency}"
+BreakChange.run

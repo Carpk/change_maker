@@ -32,7 +32,7 @@ class Change
   end
 
   def self.make(break_amount, currency = STD_VALUES)
-    min_change = Array.new(9, '#')
+    min_change = Array.new(15, '#')
     currency.length.times do
       potential_change = Change.break_total_with(break_amount, currency)
       min_change = potential_change if potential_change.length < min_change.length

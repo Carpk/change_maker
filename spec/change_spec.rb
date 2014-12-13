@@ -1,8 +1,6 @@
-require_relative "../lib/change.rb"
+require_relative "../lib/console.rb"
 
 describe "Change" do
-
-  let(:game) {GamePlay.new(Player.new(:violet, 0), Grue.new(:vermillion, 1), :emerald)}
 
   it "should return correct value using standard currency" do
     expect(Change.make(26)).to eq([25,1])

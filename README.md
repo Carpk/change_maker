@@ -9,7 +9,7 @@ To run the app, use the following command accompanied with the value you would l
 
 To run rspec tests:
 
-rspec spec/change_spec.rb
+`rake spec`
 
 ## Instructions
 
