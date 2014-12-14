@@ -3,10 +3,11 @@ class ValidIO
   def validate_coins(coins)
     coins = coins.split(",").map { |coin| coin.to_i }
     coins.delete_if { |coin| coin.class != Fixnum || coin == 0}
-    puts "#{coins}"
+
     if coins.empty?
       coins = [25, 10, 5, 1]
     end
+
     coins
   end
 

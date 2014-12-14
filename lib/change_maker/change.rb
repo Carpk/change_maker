@@ -21,7 +21,7 @@ class Change
   end
 
   def make_change(break_amount, currency)
-    min_change = create_coins(break_amount, 1)
+    min_change = create_coins(break_amount, currency.min)
     currency.length.times do
       potential_change = break_total_with(break_amount, currency)
       min_change = potential_change if potential_change.length < min_change.length
